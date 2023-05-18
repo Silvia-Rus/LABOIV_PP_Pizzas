@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap-icons/font/bootstrap-icons.css';
+
+html,
+footer {
+    width: 100%; 
+    text-align: center; 
+    /* background-color: #c6b299; */
+} 
+
+/* nav {
+    width: 100%;
+    margin-top: 0;
+    top: 0;
+    background-color: #c6b299;
+} */
+
+ body {
+    background-size: auto;
+    background-position: absolute;
+    background: url(assets/fondo_pizzas.jpeg);
+} 
+
+/* h1{
+    color: #785d56;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+} */ 
+
