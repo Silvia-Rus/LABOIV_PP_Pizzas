@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="card text-center">
+      <div class="card-header">
+          <b>Repartidores</b>
+      </div>
+      <div class="container py-2">
+          <div class="p-4 mb-4 bg-light rounded-3">
+              <div class="container-fluid py-2">
+                  <h4 class="fw-bold">Listado</h4>
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Documento</th>
+                              <th scope="col">País</th>
+                              <th scope="col">Info</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let user of listaRepartidores; index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ user.nombre }}</td>
+                              <td>{{ user.dni }}</td>
+                              <td>{{ user.pais}}</td>
+                              <td>
+                                <button class="bi bi-info-circle" (click)="getRepartidor(user)"></button>
+                                </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div> 
+          </div>
+
+          <div class="row align-items-md-stretch">
+              <div class="col-md-6">
+                  <div class="h-100 p-5 text-white bg-dark rounded-3">
+                      <h2>Info</h2>
+                      <app-infoRepartidor class="col-md-4" [inputItemSeleccionado]="repartidor" *ngIf="repartidor">
+                      </app-infoRepartidor>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="h-100 p-5 bg-light border rounded-3">
+                      <h2>País</h2>
+                      <app-infoPaisRepartidor class="col-md-4" [inputItemSeleccionado]="repartidor" *ngIf="repartidor">
+                      </app-infoPaisRepartidor> 
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a class="btn btn-warning form-control" routerLink="/crearRepartidor">
+        Nuevo Repartidor
+      </a>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="background">
+  <div class="col ">
+    <form [formGroup]="form" class="needs-validation" novalidate="">
+          <div class="mb-3">
+              <input formControlName="nombre" 
+                     value={{nombre}}
+                     type="text" 
+                     required 
+                     minlength="7" 
+                     maxlength="20"
+                     class="form-control" 
+                     name="codigo" 
+                     placeholder="Nombre">
+          </div>
+
+          <div class="mb-3">
+              <input formControlName="ingredientes" 
+                     type="text" 
+                     value={{ingredientes}} 
+                     class="form-control" 
+                     name="descripcion"
+                     placeholder="Ingredientes"
+                     required 
+                     minlength="5">
+                  <small small class="errorMessage" *ngIf="getValue('ingredientes')?.invalid && (getValue('ingredientes').touched || getValue('ingredientes').dirty)">
+                      Ingrese un ingrediente.
+                  </small>
+          </div>
+
+          <div class="mb-3">
+              <input formControlName="precio" 
+                     type="number" 
+                     value={{precio}}
+                     required 
+                     class="form-control" 
+                     name="precio"
+                     placeholder="Precio">
+                  <small small class="errorMessage" *ngIf="getValue('precio')?.invalid && (getValue('precio').touched || getValue('precio').dirty)">
+                      Ingrese un precio válido.
+                  </small>
+          </div>
+          <div class="mb-3">
+              <input formControlName="peso" 
+                     type="number" 
+                     value={{peso}}
+                     required 
+                     max="1000" 
+                     min="500" 
+                     class="form-control"
+                     name="stock" 
+                     placeholder="Peso (en gramos)">
+                  <small small class="errorMessage" *ngIf="getValue('peso')?.invalid && (getValue('peso').touched || getValue('peso').dirty)">
+                      Ingrese un peso entre 500 y 1000 g.
+                  </small>
+          </div>
+          <button class="btn btn-warning form-control" type="button" (click)="modificarPizza()">Modificar
+              Pizza</button>
+      </form>
+  </div>
+</div>

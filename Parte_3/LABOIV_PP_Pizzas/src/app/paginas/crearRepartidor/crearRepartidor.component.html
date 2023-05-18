@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <link href="../crearRepartidor/crearRepartidor.component.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container">
+        <main>
+            <div class="rounded container bg-light">
+                <div class="py-5 text-center">
+                    <p></p>
+                    <h2>Repartidores</h2>
+                </div>
+                <div class="row g-5">
+                <!-- Lista de países -->
+                    <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-primary">Países</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        <app-listaPaises class="col" (paisEmitido)="getPaises($event)"
+                            [listaPaises]="listaPaises">
+                        </app-listaPaises> 
+                    </ul>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Datos del repartidor</h4>
+                    <form [formGroup]="form" class="needs-validation" novalidate="">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label" for="dni">DNI</label>
+                                <input formControlName="dni" 
+                                       id="dni"
+                                       type="text" 
+                                       required 
+                                       minlength="7" 
+                                       maxlength="8"
+                                       class="form-control" 
+                                       name="codigo" 
+                                       placeholder="Ingrese DNI">
+                                    <small class="invalid" *ngIf="getValue('dni')?.invalid && (getValue('dni').touched || getValue('dni').dirty)">
+                                        Ingrese un DNI válido
+                                    </small>                              
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="nombre">Nombre</label>
+                                <input formControlName="nombre" 
+                                       type="text" 
+                                       class="form-control"
+                                       name="descripcion" 
+                                       placeholder="Ingrese Nombre" 
+                                       required 
+                                       minlength="1">
+                                <small class="errorMessage" *ngIf="getValue('nombre')?.invalid && (getValue('nombre').touched || getValue('nombre').dirty)">
+                                    Ingrese un nombre válido
+                                </small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="precio">Edad</label>
+                                <input formControlName="edad" 
+                                       type="number" 
+                                       required 
+                                       max="100" 
+                                       min="16"
+                                       class="form-control" 
+                                       name="precio"
+                                       placeholder="Ingrese la edad">
+                                <small class="errorMessage" *ngIf="getValue('edad')?.invalid && (getValue('edad').touched || getValue('edad').dirty)">
+                                    Ingrese una edad válida
+                                </small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="stock">Capacidad de Transporte</label>
+                                <input formControlName="capacidad" 
+                                       type="number" 
+                                       required 
+                                       max="30" 
+                                       min="1"
+                                       class="form-control" 
+                                       name="stock" 
+                                       placeholder="Capacidad de transporte">
+                                <small class="errorMessage" *ngIf="getValue('capacidad')?.invalid && (getValue('capacidad').touched || getValue('capacidad').dirty)">
+                                    Ingrese una cantidad válida
+                                </small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="pais">País de Origen</label>
+                                <input [(ngModel)]="pais" 
+                                        formControlName="pais" 
+                                        type="text"
+                                        required 
+                                        class="form-control" 
+                                        name="pais" placeholder="País de origen"
+                                        [disabled]="true">
+                                <small class="errorMessage" *ngIf="getValue('nacionalidad')?.invalid && (getValue('nacionalidad').touched || getValue('nacionalidad').dirty)">
+                                    Ingrese un país
+                                </small>
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label" for="unidad">Tiene Unidad Propia</label>
+                                <select class="form-select" 
+                                        iid="unidad" 
+                                        formControlName="unidad"
+                                        name="unidad" r
+                                        equired>
+                                    <option value="true">Sí</option>
+                                    <option value="false">No</option>
+                                </select>
+                                <div class="errorMessage" *ngIf="getValue('comestible')?.invalid && (getValue('comestible').touched || getValue('comestible').dirty)">
+                                    Ingrese sí o no
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="continente">Continente</label>
+                                <select class="form-select" 
+                                        id="continente" 
+                                        [(ngModel)]="continente" 
+                                        formControlName="continente"
+                                        name="continente" 
+                                        required 
+                                        (change)="changeTable()">
+                                    <option value="europe">EUROPA</option>
+                                    <option value="africa">AFRICA</option>
+                                </select>
+                                <small class="errorMessage" *ngIf="getValue('continente')?.invalid && (getValue('continente').touched || getValue('continente').dirty)">
+                                    Ingrese un continente válido
+                                </small>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-primary btn-lg" 
+                                type="submit" 
+                                (click)="addRepartidor()"
+                                [disabled]="!form.valid">Registrar</button>
+                            <p></p>
+                        <a routerLink="/homeRepartidor" class="w-100 btn btn-danger btn-lg">Volver</a>
+                        <p class="mt-2" *ngIf="correcto">Se cargó correctamente</p>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </main>
+    </div>
+  </body>
+</html>
