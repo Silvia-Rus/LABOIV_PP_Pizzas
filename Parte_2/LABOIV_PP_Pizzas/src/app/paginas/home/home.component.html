@@ -1,0 +1,33 @@
+<h1></h1>
+<div class="mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-4">
+      <div class="image d-flex flex-column justify-content-center align-items-center">
+          <img src="" id='img' height="200" width="200" />
+          <span class="name mt-3">
+            {{data.name}}
+          </span>
+          <span class="idd">   
+            <i class="bi bi-github"> </i>         
+            <a href="https://github.com/{{data.login}}">{{data.login}}</a> 
+          </span>
+          <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+              <span class="idd1">
+                {{data.location}}
+              </span>
+              <span><i class="fa fa-copy"></i></span>
+          </div>
+          <div *ngIf="userLogged|async as user; else then_content">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-secondary" routerLink="/homeRepartidor">Repartidores</button>
+            </div> 
+          </div> 
+          <ng-template #then_content>
+              <a class="btn btn-warning form-control" routerLink="/login">
+                  Iniciar Sesión
+              </a>
+          </ng-template>
+      </div>
+  </div> 
+</div>
+
+

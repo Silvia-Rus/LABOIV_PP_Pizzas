@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="card text-center">
+      <div class="card-header">
+          <b>Repartidores</b>
+      </div>
+      <div class="containera py-2">
+          <div class="p-4 mb-4 bg-light rounded-3">
+              <div class="container-fluid py-2">
+                  <h4 class="fw-bold">Listado</h4>
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Documento</th>
+                              <th scope="col">País</th>
+                              <th scope="col">Info</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let user of listaRepartidores; index as i">
+                              <th scope="row">{{ i + 1 }}</th>
+                              <td>{{ user.nombre }}</td>
+                              <td>{{ user.dni }}</td>
+                              <td>{{ user.pais}}</td>
+                              <td>
+                                 <!-- <button type="button" class="btn btn-warning" (click)="getDelivery(user)">  -->
+                                  <button class="bi bi-info-circle" (click)="getRepartidor(user)">
+                                  <!-- <button type="button" class="btn btn-primary"> -->
+                                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                          fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                          <path
+                                              d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z">
+                                          </path>
+                                          <path
+                                              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z">
+                                          </path>
+                                      </svg> -->
+                                  <!-- </button> -->
+                                </button>
+                                <!-- </button> -->
+                                </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div> 
+          </div>
+
+          <div class="row align-items-md-stretch">
+              <div class="col-md-6">
+                  <div class="h-100 p-5 text-white bg-dark rounded-3">
+                      <h2>Info</h2>
+                      <app-infoRepartidor class="col-md-4" [inputItemSeleccionado]="repartidor" *ngIf="repartidor">
+                      </app-infoRepartidor>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="h-100 p-5 bg-light border rounded-3">
+                      <h2>País</h2>
+                      <app-infoPaisRepartidor class="col-md-4" [inputItemSeleccionado]="repartidor" *ngIf="repartidor">
+                      </app-infoPaisRepartidor> 
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a class="btn btn-warning form-control" routerLink="/crearRepartidor">
+        Nuevo Repartidor
+      </a>
+      <app-botonVolverHome></app-botonVolverHome>
+  </div>
+</div>
